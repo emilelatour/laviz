@@ -57,6 +57,7 @@ my_colors <- list(
 
 ## Then save it in data folder ----------------
 
+# devtools::use_data(my_colors, overwrite = TRUE)
 # save(my_colors, file = here::here("data", "my_colors.RData"))
 
 
