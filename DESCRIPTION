@@ -1,0 +1,28 @@
+Package: laviz
+Version: 0.0.0.9000
+Title: What the Package Does (One Line, Title Case)
+Description: What the package does (one paragraph).
+Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports: 
+    magrittr,
+    dplyr,
+    ggplot2,
+    tidyr,
+    tibble,
+    rlang,
+    readxl,
+    purrr,
+    knitr,
+    here,
+    grDevices,
+    lamisc,
+    tidyverse,
+    janitor,
+    beyonce
+RoxygenNote: 6.0.1
+URL: https://github.com/emilelatour/laviz
+BugReports: https://github.com/emilelatour/laviz/issues
