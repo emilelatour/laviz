@@ -22,32 +22,32 @@
 #' @examples
 #' pacman::p_load(tidyverse)
 #'
-#' histogg(data = mtcars,
-#'         var = disp,
+#' histogg(data = diamonds,
+#'         var = price,
 #'         binw_select = "FD",
 #'         facet = NULL)
 #'
-#' histogg(data = mtcars,
-#'         var = disp,
+#' histogg(data = diamonds,
+#'         var = price,
 #'         binw_select = "Sturges",
 #'         facet = NULL)
 #'
-#' histogg(data = mtcars,
-#'         var = disp,
+#' histogg(data = diamonds,
+#'         var = price,
 #'         binw_select = "Scott",
 #'         facet = NULL)
 #'
-#' histogg(data = mtcars,
-#'         var = disp,
+#' histogg(data = diamonds,
+#'         var = price,
 #'         binw_select = "Square-root",
 #'         facet = NULL)
 #'
-#' histogg(data = mtcars,
-#'         var = disp,
+#' histogg(data = diamonds,
+#'         var = price,
 #'         binw_select = "Rice",
 #'         facet = NULL)
 #'
-#' ggplot(data = mtcars, aes(x = disp)) +
+#' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_density(alpha = 0.4,
 #'                fill = "darkgreen") +
 #'   theme_minimal()
