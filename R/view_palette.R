@@ -12,7 +12,6 @@
 #' @export
 #'
 #' @examples
-#' library(lamisc)
 #' library(beyonce)
 #' view_palette(my_palette("sb_deep"))
 #' view_palette(beyonce_palette(1))

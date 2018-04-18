@@ -21,7 +21,7 @@ A vector of colours.
 }
 \description{
 A few of my favorite and most used (discrete) palettes. Some are just base
-R colors put into a vector. Others come from the follwoing sources:
+R colors put into a vector. Others come from the following sources:
 https://github.com/mwaskom/seaborn/blob/master/seaborn/palettes.py
 https://personal.sron.nl/~pault/
 }
@@ -30,7 +30,6 @@ Adapted from [karthik/wesanderson](https://github.com/karthik/wesanderson)
 and [dill/beyonce](https://github.com/dill/beyonce)
 }
 \examples{
-library(lamisc)
 library(tidyverse)
 my_palette("tol_colors")
 my_palette("tol_colors") \%>\%

@@ -16,7 +16,6 @@ when you only want to pick specific colors from a palette and you don't know
 what they are yet.
 }
 \examples{
-library(lamisc)
 library(beyonce)
 view_palette(my_palette("sb_deep"))
 view_palette(beyonce_palette(1))
