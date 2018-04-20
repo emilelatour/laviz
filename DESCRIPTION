@@ -20,7 +20,6 @@ Imports:
     knitr,
     here,
     grDevices,
-    lamisc,
     tidyverse,
     janitor,
     beyonce
