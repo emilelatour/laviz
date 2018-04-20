@@ -30,7 +30,7 @@ NULL
 #' library(tidyverse)
 #' my_palette("tol_colors")
 #' my_palette("tol_colors") %>%
-#'   lamisc::view_palette()
+#'   view_palette()
 #' ggplot(data = mtcars, aes(x = factor(cyl), fill = factor(vs))) +
 #'   geom_bar(stat = "count") +
 #'   scale_fill_manual(values = my_palette("tol_colors"))

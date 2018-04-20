@@ -1,6 +1,6 @@
 
 
-#' histogg
+#' Histograms with options for auto-binning
 #'
 #' Function to plot histograms with specified bin width. See reference:
 #' \url{https://www.answerminer.com/blog/binning-guide-ideal-histogram}.
@@ -22,30 +22,40 @@
 #' @examples
 #' pacman::p_load(tidyverse)
 #'
-#' histogg(data = diamonds,
-#'         var = price,
-#'         binw_select = "FD",
-#'         facet = NULL)
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Sturges",
+#'          facet = NULL)
 #'
-#' histogg(data = diamonds,
-#'         var = price,
-#'         binw_select = "Sturges",
-#'         facet = NULL)
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Scott",
+#'          facet = cut)
 #'
-#' histogg(data = diamonds,
-#'         var = price,
-#'         binw_select = "Scott",
-#'         facet = NULL)
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "FD",
+#'          facet = NULL)
 #'
-#' histogg(data = diamonds,
-#'         var = price,
-#'         binw_select = "Square-root",
-#'         facet = NULL)
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Sturges",
+#'          facet = NULL)
 #'
-#' histogg(data = diamonds,
-#'         var = price,
-#'         binw_select = "Rice",
-#'         facet = NULL)
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Scott",
+#'          facet = NULL)
+#'
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Square-root",
+#'          facet = NULL)
+#'
+#' gg_histo(data = diamonds,
+#'          var = price,
+#'          binw_select = "Rice",
+#'          facet = NULL)
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_density(alpha = 0.4,
@@ -60,23 +70,30 @@
 #' @importFrom grDevices nclass.Sturges
 #' @importFrom grDevices nclass.scott
 #'
-histogg <- function(data,
-                    var,
-                    binw_select = "FD",
-                    facet = NULL,
-                    alpha = 0.8,
-                    fill = "steelblue",
-                    colour = "black",
-                    theme_for_histo = theme_minimal()) {
+#'
+gg_histo <- function(data,
+                     var,
+                     binw_select = "FD",
+                     facet = NULL,
+                     alpha = 0.8,
+                     fill = "steelblue",
+                     colour = "black",
+                     theme_for_histo = theme_minimal()) {
+
+  #### Checks for errots --------------------------------
+
+  stopifnot(class(data) %in% c("tbl_df", "tbl", "data.frame"))
+  if (!(binw_select %in% c("FD", "Sturges", "Scott", "Square-root",
+                           "Rice"))) {
+    stop("Method to select binwidth not known")
+  }
+
 
   var_enq <- rlang::enquo(var)
-
-  ## Make the base plot ----------------
-
-  g <- ggplot(data = data, ggplot2::aes_(x = var_enq))
+  facet_enq <- rlang::enquo(facet)
 
 
-  ## Different ways to calc bin width ----------------
+  #### Different ways to calc bin width --------------------------------
 
   calc_bin_width <- function(x, binw_select) {
 
@@ -111,34 +128,33 @@ histogg <- function(data,
     purrr::map_dbl(.x = .,
                    .f = ~ calc_bin_width(x = .x, binw_select = binw_select))
 
-  ## Plot given bin width above ----------------
 
-  g <- g + geom_histogram(
-    stat = "bin",
-    binwidth = bin_width,
-    alpha = alpha,
-    fill = fill,
-    colour = colour)
-
-
-  ## Add a theme ----------------
-
-  g <- g +
-    theme_for_histo
-
-
-  ## facet_wrap if applicable ----------------
+  #### Plot if facetted or not --------------------------------
 
   if (!is.null(facet)) {
 
-    g <- g +
-      facet_wrap(as.formula(paste("~ ", facet)), scales = 'free_x')
+    ggplot(data = data,
+           ggplot2::aes_(x = rlang::quo_expr(var_enq))) +
+      geom_histogram(stat = "bin",
+                     binwidth = bin_width,
+                     alpha = alpha,
+                     fill = fill,
+                     colour = colour) +
+      facet_wrap(facet_enq, scales = "free") +
+      theme_for_histo
 
+
+  } else {
+
+    ggplot(data = data,
+           ggplot2::aes_(x = rlang::quo_expr(var_enq))) +
+      geom_histogram(stat = "bin",
+                     binwidth = bin_width,
+                     alpha = alpha,
+                     fill = fill,
+                     colour = colour) +
+      theme_for_histo
   }
-
-
-  ## Plot it ----------------
-
-  print(g)
-
 }
+
+
