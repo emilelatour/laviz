@@ -78,18 +78,24 @@ gg_histo <- function(data,
                      alpha = 0.8,
                      fill = "steelblue",
                      colour = "black",
-                     theme_for_histo = theme_minimal()) {
+                     theme_for_histo = theme_minimal(),
+                     title = NULL,
+                     subtitle = NULL) {
 
-  #### Checks for errots --------------------------------
+  #### Checks for errors --------------------------------
 
   stopifnot(class(data) %in% c("tbl_df", "tbl", "data.frame"))
-  if (!(binw_select %in% c("FD", "Sturges", "Scott", "Square-root",
-                           "Rice"))) {
+
+  if (!(binw_select %in% c("FD", "Sturges", "Scott",
+                           "Square-root", "Rice"))) {
     stop("Method to select binwidth not known")
   }
 
 
+  #### quo some vars brah --------------------------------
+
   var_enq <- rlang::enquo(var)
+  var_name <- rlang::quo_name(var_enq)
   facet_enq <- rlang::enquo(facet)
 
 
@@ -125,6 +131,7 @@ gg_histo <- function(data,
 
   bin_width <- data %>%
     dplyr::select(!! var_enq) %>%
+    dplyr::filter(!is.na(!! var_enq)) %>%
     purrr::map_dbl(.x = .,
                    .f = ~ calc_bin_width(x = .x, binw_select = binw_select))
 
@@ -141,6 +148,9 @@ gg_histo <- function(data,
                      fill = fill,
                      colour = colour) +
       facet_wrap(facet_enq, scales = "free") +
+      labs(title = var_name,
+           x = "",
+           subtitle = subtitle) +
       theme_for_histo
 
 
@@ -153,6 +163,9 @@ gg_histo <- function(data,
                      alpha = alpha,
                      fill = fill,
                      colour = colour) +
+      labs(title = var_name,
+           x = "",
+           subtitle = subtitle) +
       theme_for_histo
   }
 }
