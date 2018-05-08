@@ -5,7 +5,8 @@
 \title{Histograms with options for auto-binning}
 \usage{
 gg_histo(data, var, binw_select = "FD", facet = NULL, alpha = 0.8,
-  fill = "steelblue", colour = "black", theme_for_histo = theme_minimal())
+  fill = "steelblue", colour = "black", theme_for_histo = theme_minimal(),
+  title = NULL, subtitle = NULL)
 }
 \arguments{
 \item{data}{Data frame or tibble}
@@ -26,13 +27,17 @@ Freedman-Diaconis (1981) (default), "Sturges" for Sturges (1926),
 \item{colour}{Outline colour of histogram blocks.}
 
 \item{theme_for_histo}{Specify the ggplot theme. Default is theme_minimal().}
+
+\item{title}{The main title of the plot}
+
+\item{subtitle}{A subtitle for the plot}
 }
 \description{
 Function to plot histograms with specified bin width. See reference:
 \url{https://www.answerminer.com/blog/binning-guide-ideal-histogram}.
 }
 \examples{
-pacman::p_load(tidyverse)
+library(tidyverse)
 
 gg_histo(data = diamonds,
          var = price,

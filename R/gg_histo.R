@@ -16,11 +16,13 @@
 #' @param fill Fill colour for histrogram.
 #' @param colour Outline colour of histogram blocks.
 #' @param theme_for_histo Specify the ggplot theme. Default is theme_minimal().
+#' @param title The main title of the plot
+#' @param subtitle A subtitle for the plot
 #'
 #' @export
 #'
 #' @examples
-#' pacman::p_load(tidyverse)
+#' library(tidyverse)
 #'
 #' gg_histo(data = diamonds,
 #'          var = price,
