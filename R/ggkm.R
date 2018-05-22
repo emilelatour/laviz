@@ -16,34 +16,34 @@
 #'   \code{FALSE}
 #' @param timeby Integer; amount to break the x-axis by.
 #' @param xlims A numeric vector; The minimum and maximum values for the x-axis.
-#'   Default is `0` and max time in the survfit obeject.
+#'   Default is \code{0} and max time in the survfit obeject.
 #' @param ylims A numeric vector; The minimum and maximum values for the y-axis.
-#'   Default is `0` to `1.01` to give a little space at the top.
+#'   Default is \code{0} to \code{1.01} to give a little space at the top.
 #' @param xlabs String; Label for the x-axis. Default is "Time".
 #' @param ylabs String; Label for the y-axis. Default is "Survival Probability
-#'   (%)"
+#'   (\%)"
 #' @param ystratalabs String vector; Labels for the strata
 #' @param ystrataname String; The title for the strata.
 #' @param pval Logical; \code{TRUE} is default and shows a p-value onn the plot.
 #' @param pval_threshold Numeric; threshold to showing actual p-value or "P <
-#'   ...". Defualt is `0.001`.
+#'   ...". Defualt is \code{0.001}.
 #' @param pvalpos A numeric vector; Position for the p-value on the plot if
-#'   `pval` is `TRUE`. Default is in the lower left corner of the plot.
+#'   \code{pval} is \code{TRUE}. Default is in the lower left corner of the plot.
 #' @param text_annotate String; Text to show instead of p-value.
 #' @param marks Logical; \code{TRUE} will show marks for censoring. Default is
 #'   \code{FALSE}
-#' @param shape Integer; Controls the shape of the censoring mark if `TRUE`.
-#'   Default is `3`, a cross shape. Other good option is `4` = X
+#' @param shape Integer; Controls the shape of the censoring mark if \code{TRUE}.
+#'   Default is \code{3}, a cross shape. Other good option is \code{4} = X
 #' @param linetype Logical; if \code{TRUE} then lines will be different types:
-#'   solid, dashed, dotted, etc. Default is `FALSE`.
+#'   solid, dashed, dotted, etc. Default is \code{FALSE}.
 #' @param linecolor Logical; if \code{TRUE} then lines are different colors.
-#'   Default is `TRUE`.
+#'   Default is \code{TRUE}.
 #' @param blackandwhite Logical; if \code{TRUE}, plot is made in black and white
-#'   using R's `gray.colors`
+#'   using R's \code{gray.colors}
 #' @param palette The color paletter to be used. Default are opinionated
 #'   choices.
 #' @param legend Logical; if \code{TRUE} then the legend is shown.
-#'   Default is `TRUE`.
+#'   Default is \code{TRUE}.
 #' @param legpos Numeric vector; Position of the legend. Default is the upper
 #'   right corner of the plot.
 #' @param subs Default is NULL
@@ -51,23 +51,22 @@
 #' @param adj_table_title Numeric; adjusts the postion of the title for the Risk
 #'   Table when used. Combining plots will move this label around. This argument
 #'   will artifically move the label out of place so that it ends up in the
-#'   right place. Default is `-0.20`. __More negative moves left__. This takes
-#'   trial and error.
+#'   right place. Default is \code{-0.20}. __More negative moves left__. This
+#'   takes trial and error.
 #' @param adj_y_axis_label Numeric; adjusts the postion of the title for the
 #'   Risk Table when used. Combining plots will move this label around. This
 #'   argument will artifically move the label out of place so that it ends up
-#'   in the right place. Default is `-12.5`. __More negative moves right__. This
-#'   takes trial and error.
+#'   in the right place. Default is \code{-12.5}. __More negative moves right__.
+#'   This takes trial and error.
 #' @param surv_plot_height the height of the survival plot on the grid. Default
-#'   is `0.75`. Ignored when risk.table = `FALSE`.
+#'   is \code{0.75}. Ignored when risk.table = \code{FALSE}.
 #' @param risk_table_height the height of the risk table on the grid. Increase
-#'   the value when you have many strata. Default is `0.25`. Ignored when
-#'   risk.table = `FALSE`.
+#'   the value when you have many strata. Default is \code{0.25}. Ignored when
+#'   risk.table = \code{FALSE}.
 #'
 #' @import ggplot2
 #' @import dplyr
 #' @import survival
-#' @import magrittr
 #' @import ggpubr
 #' @import extrafont
 #' @import forcats
@@ -82,6 +81,11 @@
 #'
 #' @examples
 #' library(survival)
+#' #### Load fonts --------------------------------
+#' # extrafont::fonts()  # Vector of font family names
+#' # extrafont::fonttable()  # Show entire table
+#' # extrafont::font_import()  # imports fonts installed on the system
+#' extrafont::loadfonts(device = "win", quiet = TRUE)
 #' data(colon)
 #' fit <- survfit(Surv(time, status) ~ 1, data = colon)
 #' ggkm(fit, timeby = 500, marks = TRUE)
@@ -115,10 +119,9 @@
 #'             legend = TRUE,
 #'             subs = NULL,
 #'             legpos = c(1, 1),
+#'             text_annotate = "Here is some text",
 #'             pvalpos = c(500, 0.25),
-#'             font_family = "Times New Roman",
-#'             text_annotate = "Here lies some text"
-#' )
+#'             font_family = "Times New Roman")
 #'
 #' foo
 #'
@@ -148,7 +151,7 @@ ggkm <- function(sfit,
                  legend = TRUE,
                  legpos = c(0.9, 0.8),
                  subs = NULL,
-                 font_family = "Arial",
+                 font_family = "",
                  adj_table_title = -0.20,  # more negative moves left
                  adj_y_axis_label = -12.5, # more negative moves right
                  surv_plot_height = 0.75,
@@ -414,7 +417,7 @@ ggkm <- function(sfit,
                y = pvalpos[2],
                label = text_annotate,
                family = font_family,
-               parse = TRUE)
+               parse = FALSE)
 
   }
 
