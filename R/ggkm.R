@@ -79,8 +79,9 @@
 #' @return A plot
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
 #' library(survival)
+#' library(extrafont)
 #' #### Load fonts --------------------------------
 #' # extrafont::fonts()  # Vector of font family names
 #' # extrafont::fonttable()  # Show entire table
@@ -124,6 +125,7 @@
 #'             font_family = "Times New Roman")
 #'
 #' foo
+#' }
 #'
 ggkm <- function(sfit,
                  main = "Kaplan-Meier Plot",
@@ -151,7 +153,7 @@ ggkm <- function(sfit,
                  legend = TRUE,
                  legpos = c(0.9, 0.8),
                  subs = NULL,
-                 font_family = "",
+                 font_family = "Arial",
                  adj_table_title = -0.20,  # more negative moves left
                  adj_y_axis_label = -12.5, # more negative moves right
                  surv_plot_height = 0.75,

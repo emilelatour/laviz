@@ -12,7 +12,7 @@ ggkm(sfit, main = "Kaplan-Meier Plot", subtitle = NA, risk_table = TRUE,
   shape = 3, linetype = FALSE, linecolor = TRUE, blackandwhite = FALSE,
   palette = c("#0073C2", "#EFC000", "#868686", "#CD534C", "#7AA6DC",
   "#003C67", "#8F7700", "#3B3B3B", "#A73030", "#4A6990"), legend = TRUE,
-  legpos = c(0.9, 0.8), subs = NULL, font_family = "",
+  legpos = c(0.9, 0.8), subs = NULL, font_family = "Arial",
   adj_table_title = -0.2, adj_y_axis_label = -12.5,
   surv_plot_height = 0.75, risk_table_height = 0.25)
 }
@@ -112,7 +112,9 @@ shared online. Just google "ggkm" and you'll see them. My version allows me
 to make the tweaks and adjustments that I want when making these plots.
 }
 \examples{
+\dontrun{
 library(survival)
+library(extrafont)
 #### Load fonts --------------------------------
 # extrafont::fonts()  # Vector of font family names
 # extrafont::fonttable()  # Show entire table
@@ -156,5 +158,6 @@ foo <- ggkm(sfit = sfit,
             font_family = "Times New Roman")
 
 foo
+}
 
 }
