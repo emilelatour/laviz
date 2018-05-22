@@ -19,6 +19,7 @@
 #' @import ggpubr
 #' @import rlang
 #' @import scales
+#' @importFrom rlang .data
 #' @importFrom purrr map_dbl
 #' @importFrom stats as.formula
 #' @importFrom stats quantile
@@ -122,22 +123,22 @@ plot_cont <-
     tbl <- data %>%
       dplyr::select(!! var_enq) %>%
       tidyr::gather(key = "variable", value = "value") %>%
-      group_by(variable) %>%
+      group_by(.data$variable) %>%
       summarise(
-        missing = sum(is.na(value)),
-        observed = sum(!is.na(value)),
+        missing = sum(is.na(.data$value)),
+        observed = sum(!is.na(.data$value)),
         n = n(),
-        mean = round(mean(value, na.rm = TRUE), digits = 3),
-        sd = round(sd(value, na.rm = TRUE), digits = 3),
-        range = max(value, na.rm = TRUE) - min(value, na.rm = TRUE),
-        min = min(value, na.rm = TRUE),
-        p25 = quantile(value, probs = 0.25, na.rm = TRUE),
-        median = quantile(value, probs = 0.5, na.rm = TRUE),
-        p75 = quantile(value, probs = 0.75, na.rm = TRUE),
-        max = max(value, na.rm = TRUE)
+        mean = round(mean(.data$value, na.rm = TRUE), digits = 3),
+        sd = round(sd(.data$value, na.rm = TRUE), digits = 3),
+        range = max(.data$value, na.rm = TRUE) - min(.data$value, na.rm = TRUE),
+        min = min(.data$value, na.rm = TRUE),
+        p25 = quantile(.data$value, probs = 0.25, na.rm = TRUE),
+        median = quantile(.data$value, probs = 0.5, na.rm = TRUE),
+        p75 = quantile(.data$value, probs = 0.75, na.rm = TRUE),
+        max = max(.data$value, na.rm = TRUE)
       ) %>%
       mutate_all(.tbl = ., .funs = funs(as.character)) %>%
-      dplyr::select(-variable) %>%
+      dplyr::select(-.data$variable) %>%
       tidyr::gather(key = "stat", value = "value") %>%
       ggpubr::ggtexttable(rows = NULL, theme = ttheme(base_size = 9))
 
