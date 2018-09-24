@@ -13,9 +13,10 @@ theme_rudis_ps(base_family = "IBM Plex Sans", base_size = 11.5,
   strip_text_face = "plain", caption_family = "IBM Plex Sans Medium",
   caption_size = 9, caption_face = "plain", caption_margin = 10,
   axis_text_size = 9, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = margin(30, 30, 30, 30), grid_col = "#cccccc", grid = TRUE,
-  axis_col = "#cccccc", axis = FALSE, ticks = FALSE)
+  axis_title_size = 9, axis_title_face = "plain",
+  axis_title_just = "rt", plot_margin = margin(30, 30, 30, 30),
+  grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
+  axis = FALSE, ticks = FALSE)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
