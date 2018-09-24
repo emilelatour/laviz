@@ -2,6 +2,7 @@
 
 export("%>%")
 export(gg_histo)
+export(gg_pie)
 export(ggkm)
 export(make_plots)
 export(my_palette)
