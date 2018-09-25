@@ -27,8 +27,6 @@ library(rlang)
 #' @import rlang
 #' @import ggplot2
 #'
-#'
-#' @return
 #' @export
 #'
 #' @examples
