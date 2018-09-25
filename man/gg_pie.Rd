@@ -4,12 +4,15 @@
 \alias{gg_pie}
 \title{A tasteful pie chart}
 \usage{
-gg_pie(data, var, ...)
+gg_pie(data, var, over_ride = FALSE, ...)
 }
 \arguments{
 \item{data}{A data frame or tibble}
 
 \item{var}{Variable with the data to be sliced}
+
+\item{over_ride}{Logical; The function won't let you plot more than 4 groups
+when `over_ride = FALSE`.}
 
 \item{...}{Additional function arguments}
 }
@@ -27,6 +30,10 @@ difficult to tell what value they represent, and (2) if mulitple pie slices
 are close in size the it becomes difficult to tell them apart.
 }
 \examples{
-gg_pie(data = ggplot2::mpg,
-       var = class)
+\dontrun{
+gg_pie(data = ggplot2::mpg, var = class)
+gg_pie(data = ggplot2::mpg, var = class, over_ride = TRUE)
+gg_pie(data = ggplot2::diamonds, var = clarity)
+gg_pie(data = ggplot2::diamonds, var = clarity, over_ride = TRUE)
+}
 }

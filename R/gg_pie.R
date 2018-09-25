@@ -22,6 +22,8 @@ library(rlang)
 #'
 #' @param data A data frame or tibble
 #' @param var Variable with the data to be sliced
+#' @param over_ride Logical; The function won't let you plot more than 4 groups
+#'   when `over_ride = FALSE`.
 #' @param ... Additional function arguments
 #'
 #' @import rlang
@@ -29,13 +31,32 @@ library(rlang)
 #'
 #' @export
 #'
-#' @examples
-#' gg_pie(data = ggplot2::mpg,
-#'        var = class)
+#' @examples \dontrun{
+#' gg_pie(data = ggplot2::mpg, var = class)
+#' gg_pie(data = ggplot2::mpg, var = class, over_ride = TRUE)
+#' gg_pie(data = ggplot2::diamonds, var = clarity)
+#' gg_pie(data = ggplot2::diamonds, var = clarity, over_ride = TRUE)
+#' }
 
-gg_pie <- function(data, var, ...) {
+gg_pie <- function(data, var, over_ride = FALSE, ...) {
+
+  #### Enquo vars --------------------------------
 
   var <- rlang::enquo(var)
+
+  #### Checks for errors --------------------------------
+
+  unique_lvls <- data %>%
+    dplyr::pull(!! var) %>%
+    unique(.) %>%
+    length(.)
+
+  if (unique_lvls > 4 & !over_ride) {
+    stop("That's a lot of categories. Consider a bar chart instead.")
+  }
+
+
+  #### Make the pie chart --------------------------------
 
   piechart_basic(data, aes(factor(1), fill = !! var))
 
@@ -53,3 +74,4 @@ piechart_basic <- function(data, mapping) {
     ylab(NULL)
 }
 # piechart_basic(mpg, aes(factor(1), fill = class))
+
