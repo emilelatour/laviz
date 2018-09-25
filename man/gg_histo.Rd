@@ -47,32 +47,17 @@ gg_histo(data = diamonds,
 gg_histo(data = diamonds,
          var = price,
          binw_select = "Scott",
-         facet = cut)
+         facet = clarity)
 
 gg_histo(data = diamonds,
          var = price,
          binw_select = "FD",
-         facet = NULL)
-
-gg_histo(data = diamonds,
-         var = price,
-         binw_select = "Sturges",
-         facet = NULL)
-
-gg_histo(data = diamonds,
-         var = price,
-         binw_select = "Scott",
-         facet = NULL)
+         facet = clarity)
 
 gg_histo(data = diamonds,
          var = price,
          binw_select = "Square-root",
-         facet = NULL)
-
-gg_histo(data = diamonds,
-         var = price,
-         binw_select = "Rice",
-         facet = NULL)
+         facet = clarity)
 
 ggplot(data = diamonds, aes(x = price)) +
   geom_density(alpha = 0.4,

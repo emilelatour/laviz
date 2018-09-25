@@ -32,32 +32,17 @@
 #' gg_histo(data = diamonds,
 #'          var = price,
 #'          binw_select = "Scott",
-#'          facet = cut)
+#'          facet = clarity)
 #'
 #' gg_histo(data = diamonds,
 #'          var = price,
 #'          binw_select = "FD",
-#'          facet = NULL)
-#'
-#' gg_histo(data = diamonds,
-#'          var = price,
-#'          binw_select = "Sturges",
-#'          facet = NULL)
-#'
-#' gg_histo(data = diamonds,
-#'          var = price,
-#'          binw_select = "Scott",
-#'          facet = NULL)
+#'          facet = clarity)
 #'
 #' gg_histo(data = diamonds,
 #'          var = price,
 #'          binw_select = "Square-root",
-#'          facet = NULL)
-#'
-#' gg_histo(data = diamonds,
-#'          var = price,
-#'          binw_select = "Rice",
-#'          facet = NULL)
+#'          facet = clarity)
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_density(alpha = 0.4,
@@ -99,6 +84,12 @@ gg_histo <- function(data,
   var_enq <- rlang::enquo(var)
   var_name <- rlang::quo_name(var_enq)
   facet_enq <- rlang::enquo(facet)
+  # facet_name <- rlang::quo_name(facet_enq)
+
+
+  #### Titles --------------------------------
+
+  # TODO -- Use the names to make a default title if NULL
 
 
   #### Different ways to calc bin width --------------------------------
@@ -138,28 +129,30 @@ gg_histo <- function(data,
                    .f = ~ calc_bin_width(x = .x, binw_select = binw_select))
 
 
-  #### Plot if facetted or not --------------------------------
+  #### Make the plot --------------------------------
 
-  if (!is.null(facet)) {
+  ## facet_wrap if not NULL ----------------
+
+  if (rlang::quo_is_null(facet_enq) == FALSE) {
 
     ggplot(data = data,
-           ggplot2::aes_(x = rlang::quo_expr(var_enq))) +
+           aes(x = !! var_enq)) +
       geom_histogram(stat = "bin",
                      binwidth = bin_width,
                      alpha = alpha,
                      fill = fill,
                      colour = colour) +
-      facet_wrap(facet_enq, scales = "free") +
+      facet_wrap(facet_enq,
+                 scales = "free") +
       labs(title = var_name,
            x = "",
            subtitle = subtitle) +
       theme_for_histo
-
 
   } else {
 
     ggplot(data = data,
-           ggplot2::aes_(x = rlang::quo_expr(var_enq))) +
+           aes(x = !! var_enq)) +
       geom_histogram(stat = "bin",
                      binwidth = bin_width,
                      alpha = alpha,
@@ -169,7 +162,56 @@ gg_histo <- function(data,
            x = "",
            subtitle = subtitle) +
       theme_for_histo
+
   }
+
+
 }
 
+ library(tidyverse)
 
+gg_histo(data = diamonds,
+         var = price,
+         binw_select = "Sturges",
+         facet = NULL)
+
+gg_histo(data = diamonds,
+         var = price,
+         binw_select = "Scott",
+         facet = clarity)
+
+gg_histo(data = diamonds,
+         var = price,
+         binw_select = "FD",
+         facet = clarity)
+
+gg_histo(data = diamonds,
+         var = price,
+         binw_select = "Square-root",
+         facet = clarity)
+
+
+ gg_histo(data = diamonds,
+          var = price,
+          binw_select = "Sturges",
+          facet = NULL)
+
+ gg_histo(data = diamonds,
+          var = price,
+          binw_select = "Scott",
+          facet = NULL)
+
+ gg_histo(data = diamonds,
+          var = price,
+          binw_select = "Square-root",
+          facet = NULL)
+
+ gg_histo(data = diamonds,
+          var = price,
+          binw_select = "Rice",
+          facet = NULL)
+
+ ggplot(data = diamonds, aes(x = price)) +
+   geom_density(alpha = 0.4,
+                fill = "darkgreen") +
+   theme_minimal()
