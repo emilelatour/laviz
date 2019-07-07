@@ -122,8 +122,8 @@ ohsu_palettes <- list(
 #'
 #' filled.contour(volcano, color.palette = ohsu_pal(), asp = 1)
 ohsu_pal <- function(palette = "main",
-                         alpha = 1,
-                         reverse = FALSE, ...) {
+                     alpha = 1,
+                     reverse = FALSE, ...) {
 
   pal <- ohsu_palettes[[palette]]
 
@@ -170,8 +170,8 @@ ohsu_pal <- function(palette = "main",
 #'     scale_color_ohsu(discrete = FALSE, palette = "cool")
 
 scale_color_ohsu <- function(palette = "main",
-                                 discrete = TRUE,
-                                 reverse = FALSE, ...) {
+                             discrete = TRUE,
+                             reverse = FALSE, ...) {
 
   pal <- ohsu_pal(palette = palette, reverse = reverse)
 
@@ -209,8 +209,8 @@ scale_colour_ohsu <- scale_color_ohsu
 #'     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
 #'     scale_fill_ohsu(palette = "mixed", guide = "none")
 scale_fill_ohsu <- function(palette = "main",
-                                discrete = TRUE,
-                                reverse = FALSE, ...) {
+                            discrete = TRUE,
+                            reverse = FALSE, ...) {
 
   pal <- ohsu_pal(palette = palette, reverse = reverse)
 
