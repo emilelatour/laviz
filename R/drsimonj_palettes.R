@@ -66,7 +66,7 @@ drsimonj_cols <- function(...) {
 #'
 #'@examples
 #'
-#' # Make an x-y plot using the Namatjira palette
+#' # Make an x-y plot using the drsimonj palette
 #' library(ggplot2)
 #' df <- data.frame(x = rnorm(100, 0, 20),
 #'           y = rnorm(100, 0, 20),
