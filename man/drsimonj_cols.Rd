@@ -2,7 +2,7 @@
 % Please edit documentation in R/drsimonj_palettes.R
 \name{drsimonj_cols}
 \alias{drsimonj_cols}
-\title{Function to extract drsimonj colors as hex codes}
+\title{drsimonj colors}
 \usage{
 drsimonj_cols(...)
 }
@@ -11,6 +11,16 @@ drsimonj_cols(...)
 }
 \description{
 Function to extract drsimonj colors as hex codes
+
+\tabular{ll}{
+  red        \tab #d11141\cr
+  green      \tab #00b159\cr
+  blue       \tab #00aedb\cr
+  orange     \tab #f37735\cr
+  yellow     \tab #ffc425\cr
+  light grey \tab #cccccc\cr
+  dark grey  \tab #8c8c8c
+}
 }
 \examples{
 library(ggplot2)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ohsu_palettes.R
 \name{ohsu_cols}
 \alias{ohsu_cols}
-\title{Function to extract ohsu colors as hex codes}
+\title{OHSU colors}
 \usage{
 ohsu_cols(...)
 }
@@ -11,6 +11,18 @@ ohsu_cols(...)
 }
 \description{
 Function to extract ohsu colors as hex codes
+
+\tabular{ll}{
+  horizon yellow    \tab #FFC939\cr
+  marquam blue      \tab #5E97C9\cr
+  ohsu gray         \tab #585E60\cr
+  terwilliger green \tab #57B147\cr
+  dark blue         \tab #002776\cr
+  orange            \tab #ED6D23\cr
+  pink red          \tab #ED1941\cr
+  cyan blue         \tab #0E4D8F\cr
+  red               \tab #C34D36
+}
 }
 \examples{
 library(ggplot2)

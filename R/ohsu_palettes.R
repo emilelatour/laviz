@@ -25,7 +25,23 @@ ohsu_colors <- c(
 # have all colors returned as they are, specify certain colors, in a particular
 # order, add additional function arguments and checks, and so on.
 
+#' @title
+#' OHSU colors
+#'
+#' @description
 #' Function to extract ohsu colors as hex codes
+#'
+#' \tabular{ll}{
+#'   horizon yellow    \tab #FFC939\cr
+#'   marquam blue      \tab #5E97C9\cr
+#'   ohsu gray         \tab #585E60\cr
+#'   terwilliger green \tab #57B147\cr
+#'   dark blue         \tab #002776\cr
+#'   orange            \tab #ED6D23\cr
+#'   pink red          \tab #ED1941\cr
+#'   cyan blue         \tab #0E4D8F\cr
+#'   red               \tab #C34D36
+#' }
 #'
 #' @param ... Character names of ohsu_colors
 #'
