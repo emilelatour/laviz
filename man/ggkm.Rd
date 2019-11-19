@@ -4,19 +4,39 @@
 \alias{ggkm}
 \title{Kaplan-Meier survival plot}
 \usage{
-ggkm(sfit, main = "Kaplan-Meier Plot", subtitle = NA,
-  risk_table = TRUE, timeby = 100, xlims = c(0, max(sfit$time)),
-  ylims = c(0, 1.01), xlabs = "Time",
-  ylabs = "Survival Probability (\%)", ystratalabs = NULL,
-  ystrataname = NULL, pval = TRUE, pval_threshold = 0.001,
-  pvalpos = c(max(sfit$time)/6, 0.2), text_annotate = NA,
-  marks = FALSE, shape = 3, linetype = FALSE, linecolor = TRUE,
-  blackandwhite = FALSE, palette = c("#0073C2", "#EFC000", "#868686",
-  "#CD534C", "#7AA6DC", "#003C67", "#8F7700", "#3B3B3B", "#A73030",
-  "#4A6990"), legend = TRUE, legpos = c(0.9, 0.8), subs = NULL,
-  font_family = "Arial", adj_table_title = -0.2,
-  adj_y_axis_label = -12.5, surv_plot_height = 0.75,
-  risk_table_height = 0.25)
+ggkm(
+  sfit,
+  main = "Kaplan-Meier Plot",
+  subtitle = NA,
+  risk_table = TRUE,
+  timeby = 100,
+  xlims = c(0, max(sfit$time)),
+  ylims = c(0, 1.01),
+  xlabs = "Time",
+  ylabs = "Survival Probability (\%)",
+  ystratalabs = NULL,
+  ystrataname = NULL,
+  pval = TRUE,
+  pval_threshold = 0.001,
+  pvalpos = c(max(sfit$time)/6, 0.2),
+  text_annotate = NA,
+  marks = FALSE,
+  shape = 3,
+  point_size = 1.5,
+  linetype = FALSE,
+  linecolor = TRUE,
+  blackandwhite = FALSE,
+  palette = c("#0073C2", "#EFC000", "#868686", "#CD534C", "#7AA6DC", "#003C67",
+    "#8F7700", "#3B3B3B", "#A73030", "#4A6990"),
+  legend = TRUE,
+  legpos = c(0.9, 0.8),
+  subs = NULL,
+  font_family = "Arial",
+  adj_table_title = -0.2,
+  adj_y_axis_label = -12.5,
+  surv_plot_height = 0.75,
+  risk_table_height = 0.25
+)
 }
 \arguments{
 \item{sfit}{A survfit object}
@@ -59,7 +79,11 @@ Default is \code{0} to \code{1.01} to give a little space at the top.}
 \code{FALSE}}
 
 \item{shape}{Integer; Controls the shape of the censoring mark if \code{TRUE}.
-Default is \code{3}, a cross shape. Other good option is \code{4} = X}
+Default is \code{3}, a cross shape. Other good option is \code{4} = X or
+\code{124} = |.}
+
+\item{point_size}{Double; Controls the size of the censoring mark. Default is
+1.5.}
 
 \item{linetype}{Logical; if \code{TRUE} then lines will be different types:
 solid, dashed, dotted, etc. Default is \code{FALSE}.}
@@ -140,7 +164,7 @@ sfit <- survfit(Surv(time, status) ~ rx, data = colon)
 foo <- ggkm(sfit = sfit,
             risk_table = TRUE,
             xlabs = "Time (in months)",
-            ylabs = "Survival Probability (\%)",
+            ylabs = "Survival Probability (%)",
             xlims = c(0, max(sfit$time)),
             ylims = c(0, 1.01),
             ystratalabs = NULL,

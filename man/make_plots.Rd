@@ -6,11 +6,18 @@
 \alias{make_plots}
 \title{Plot and table of summary stats for continuous variables}
 \usage{
-plot_cont(data, var, binw_select = "FD",
-  subtitle = "Histogram (left), summary statistics (right)")
+plot_cont(
+  data,
+  var,
+  binw_select = "FD",
+  subtitle = "Histogram (left), summary statistics (right)"
+)
 
-plot_categ(data, var, subtitle = paste0("Bar graph (left), ",
-  "frequency table of top 5 levels (right)"))
+plot_categ(
+  data,
+  var,
+  subtitle = paste0("Bar graph (left), ", "frequency table of top 5 levels (right)")
+)
 
 make_plots(df)
 }

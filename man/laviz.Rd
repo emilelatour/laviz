@@ -3,7 +3,6 @@
 \docType{package}
 \name{laviz}
 \alias{laviz}
-\alias{laviz-package}
 \title{laviz: an opinionated package of Emile's visualizations}
 \description{
 The objective of this package is to perform statistical inference

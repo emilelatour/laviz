@@ -33,7 +33,10 @@
 #' @param marks Logical; \code{TRUE} will show marks for censoring. Default is
 #'   \code{FALSE}
 #' @param shape Integer; Controls the shape of the censoring mark if \code{TRUE}.
-#'   Default is \code{3}, a cross shape. Other good option is \code{4} = X
+#'   Default is \code{3}, a cross shape. Other good option is \code{4} = X or
+#'   \code{124} = |.
+#' @param point_size Double; Controls the size of the censoring mark. Default is
+#'   1.5.
 #' @param linetype Logical; if \code{TRUE} then lines will be different types:
 #'   solid, dashed, dotted, etc. Default is \code{FALSE}.
 #' @param linecolor Logical; if \code{TRUE} then lines are different colors.
@@ -143,7 +146,8 @@ ggkm <- function(sfit,
                  pvalpos = c(max(sfit$time) / 6, 0.20),
                  text_annotate = NA,
                  marks = FALSE,
-                 shape = 3,  # 3 = cross, 4 = X
+                 shape = 3,  # 3 = cross, 4 = X, 124 = |
+                 point_size = 1.5,
                  linetype = FALSE,
                  linecolor = TRUE,
                  blackandwhite = FALSE,
@@ -374,6 +378,7 @@ ggkm <- function(sfit,
       geom_point(data = subset(.df, n.censor >= 1),
                  aes(x = time, y = surv, color = strata),
                  shape = shape,
+                 size = point_size,
                  show.legend = FALSE)
     # + scale_color_manual(values = col_palette)
   } else if (marks == TRUE && linecolor == FALSE) {
@@ -381,6 +386,7 @@ ggkm <- function(sfit,
       geom_point(data = subset(.df, n.censor >= 1),
                  aes(x = time, y = surv),
                  shape = shape,
+                 size = point_size,
                  show.legend = FALSE)
   }
 

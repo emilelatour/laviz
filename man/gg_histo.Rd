@@ -4,9 +4,18 @@
 \alias{gg_histo}
 \title{Histograms with options for auto-binning}
 \usage{
-gg_histo(data, var, binw_select = "FD", facet = NULL, alpha = 0.8,
-  fill = "steelblue", colour = "black",
-  theme_for_histo = theme_minimal(), title = NULL, subtitle = NULL)
+gg_histo(
+  data,
+  var,
+  binw_select = "FD",
+  facet = NULL,
+  alpha = 0.8,
+  fill = "steelblue",
+  colour = "black",
+  theme_for_histo = theme_minimal(),
+  title = NULL,
+  subtitle = NULL
+)
 }
 \arguments{
 \item{data}{Data frame or tibble}

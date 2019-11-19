@@ -5,11 +5,9 @@
 \alias{scale_colour_ohsu}
 \title{Color scale constructor for ohsu colors}
 \usage{
-scale_color_ohsu(palette = "main", discrete = TRUE, reverse = FALSE,
-  ...)
+scale_color_ohsu(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 
-scale_colour_ohsu(palette = "main", discrete = TRUE, reverse = FALSE,
-  ...)
+scale_colour_ohsu(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in ohsu_palettes}

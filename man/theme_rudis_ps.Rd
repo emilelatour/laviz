@@ -4,19 +4,36 @@
 \alias{theme_rudis_ps}
 \title{Wrappers for hrbrthemes that work a little more consistently on my PC using the IBM Plex Sans font.}
 \usage{
-theme_rudis_ps(base_family = "IBM Plex Sans", base_size = 11.5,
-  plot_title_family = "IBM Plex Sans", plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = "IBM Plex Sans Light", subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = "IBM Plex Sans Medium", strip_text_size = 12,
-  strip_text_face = "plain", caption_family = "IBM Plex Sans Medium",
-  caption_size = 9, caption_face = "plain", caption_margin = 10,
-  axis_text_size = 9, axis_title_family = base_family,
-  axis_title_size = 9, axis_title_face = "plain",
-  axis_title_just = "rt", plot_margin = margin(30, 30, 30, 30),
-  grid_col = "#cccccc", grid = TRUE, axis_col = "#cccccc",
-  axis = FALSE, ticks = FALSE)
+theme_rudis_ps(
+  base_family = "IBM Plex Sans",
+  base_size = 11.5,
+  plot_title_family = "IBM Plex Sans",
+  plot_title_size = 18,
+  plot_title_face = "bold",
+  plot_title_margin = 10,
+  subtitle_family = "IBM Plex Sans Light",
+  subtitle_size = 13,
+  subtitle_face = "plain",
+  subtitle_margin = 15,
+  strip_text_family = "IBM Plex Sans Medium",
+  strip_text_size = 12,
+  strip_text_face = "plain",
+  caption_family = "IBM Plex Sans Medium",
+  caption_size = 9,
+  caption_face = "plain",
+  caption_margin = 10,
+  axis_text_size = 9,
+  axis_title_family = base_family,
+  axis_title_size = 9,
+  axis_title_face = "plain",
+  axis_title_just = "rt",
+  plot_margin = margin(30, 30, 30, 30),
+  grid_col = "#cccccc",
+  grid = TRUE,
+  axis_col = "#cccccc",
+  axis = FALSE,
+  ticks = FALSE
+)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -67,7 +84,7 @@ ggplot(mtcars, aes(mpg, wt)) +
 
 # seminal bar chart
 
-count(mpg, class) \%>\%
+count(mpg, class) %>%
   ggplot(aes(class, n)) +
   geom_col() +
   geom_text(aes(label=n), nudge_y=3) +

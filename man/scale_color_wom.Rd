@@ -5,11 +5,9 @@
 \alias{scale_colour_wom}
 \title{Color scale constructor for wom colors}
 \usage{
-scale_color_wom(palette = "main", discrete = TRUE, reverse = FALSE,
-  ...)
+scale_color_wom(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 
-scale_colour_wom(palette = "main", discrete = TRUE, reverse = FALSE,
-  ...)
+scale_colour_wom(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in wom_palettes}

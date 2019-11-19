@@ -5,11 +5,9 @@
 \alias{scale_colour_drsimonj}
 \title{Color scale constructor for drsimonj colors}
 \usage{
-scale_color_drsimonj(palette = "main", discrete = TRUE,
-  reverse = FALSE, ...)
+scale_color_drsimonj(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 
-scale_colour_drsimonj(palette = "main", discrete = TRUE,
-  reverse = FALSE, ...)
+scale_colour_drsimonj(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in drsimonj_palettes}

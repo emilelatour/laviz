@@ -4,8 +4,7 @@
 \alias{scale_fill_ohsu}
 \title{Fill scale constructor for ohsu colors}
 \usage{
-scale_fill_ohsu(palette = "main", discrete = TRUE, reverse = FALSE,
-  ...)
+scale_fill_ohsu(palette = "main", discrete = TRUE, reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in ohsu_palettes}
