@@ -27,6 +27,8 @@
 #' @param pval Logical; \code{TRUE} is default and shows a p-value onn the plot.
 #' @param pval_threshold Numeric; threshold to showing actual p-value or "P <
 #'   ...". Defualt is \code{0.001}.
+#' @param pval_accuracy Number to round to, NULL for automatic guess. Default is
+#'   \code{0.001}.
 #' @param pvalpos A numeric vector; Position for the p-value on the plot if
 #'   \code{pval} is \code{TRUE}. Default is in the lower left corner of the plot.
 #' @param text_annotate String; Text to show instead of p-value.
@@ -74,6 +76,7 @@
 #' @import extrafont
 #' @import forcats
 #' @importFrom grDevices gray.colors
+#' @importFrom scales number
 #' @importFrom stats pchisq
 #' @importFrom stats quantile
 #' @importFrom stats sd
@@ -143,6 +146,7 @@ ggkm <- function(sfit,
                  ystrataname = NULL,
                  pval = TRUE,
                  pval_threshold = 0.001,
+                 pval_accuracy = 0.001,
                  pvalpos = c(max(sfit$time) / 6, 0.20),
                  text_annotate = NA,
                  marks = FALSE,
@@ -403,8 +407,10 @@ ggkm <- function(sfit,
       pchisq(sdiff$chisq, length(sdiff$n) - 1, lower.tail = FALSE)
     pvaltxt <-
       ifelse(pvalue < pval_threshold,
-             paste("italic(P)", "<", signif(pval_threshold, 3), sep = " "),
-             paste("italic(P)", "==", signif(pvalue, 3), sep = " "))
+             paste("italic(P)", "<", scales::number(pval_threshold, accuracy = pval_accuracy), sep = " "),
+             paste("italic(P)", "==", scales::number(pvalue, accuracy = pval_accuracy), sep = " "))
+             # paste("italic(P)", "<", signif(pval_threshold, 3), sep = " "),
+             # paste("italic(P)", "==", signif(pvalue, 3), sep = " "))
              # paste("p <", signif(pval_threshold, 3)),
              # paste("p =", signif(pvalue, 3)))
 

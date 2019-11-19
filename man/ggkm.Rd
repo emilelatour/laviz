@@ -18,6 +18,7 @@ ggkm(
   ystrataname = NULL,
   pval = TRUE,
   pval_threshold = 0.001,
+  pval_accuracy = 0.001,
   pvalpos = c(max(sfit$time)/6, 0.2),
   text_annotate = NA,
   marks = FALSE,
@@ -69,6 +70,9 @@ Default is \code{0} to \code{1.01} to give a little space at the top.}
 
 \item{pval_threshold}{Numeric; threshold to showing actual p-value or "P <
 ...". Defualt is \code{0.001}.}
+
+\item{pval_accuracy}{Number to round to, NULL for automatic guess. Default is
+\code{0.001}.}
 
 \item{pvalpos}{A numeric vector; Position for the p-value on the plot if
 \code{pval} is \code{TRUE}. Default is in the lower left corner of the plot.}
