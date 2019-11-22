@@ -271,7 +271,9 @@ ggkm <- function(sfit,
 
   m <- max(nchar(ystratalabs))
 
-  times <- seq(0, max(sfit$time), by = timeby)
+  times <- seq(0,
+               max(xlims[[2]], max(sfit$time)),
+               by = timeby)
 
   if (length(levels(summary(sfit)$strata)) == 0) {
     Factor <- factor(rep("All", length(subs2)))
