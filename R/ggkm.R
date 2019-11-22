@@ -189,7 +189,9 @@ ggkm <- function(sfit,
 
   #### Sorting to be used in subsetting --------------------------------
 
-  times <- seq(0, max(sfit$time), by = timeby)
+  times <- seq(0,
+               max(xlims[[2]], max(sfit$time)),
+               by = timeby)
 
   if (is.null(subs)) {
     if (length(levels(summary(sfit)$strata)) == 0) {
