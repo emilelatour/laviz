@@ -18,7 +18,7 @@ NULL
 if (getRversion() >= "2.15.1") {
   utils::globalVariables(
     c(
-      ".", "surv", "n.censor", "n.risk"
+      ".", "surv", "n.censor", "n.risk", "parameter", "values"
     )
   )
 }
