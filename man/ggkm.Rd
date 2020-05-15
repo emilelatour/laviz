@@ -9,6 +9,7 @@ ggkm(
   main = "Kaplan-Meier Plot",
   subtitle = NA,
   risk_table = TRUE,
+  risk_title = "Number at risk",
   timeby = 100,
   xlims = c(0, max(sfit$time)),
   ylims = c(0, 1.01),
@@ -48,6 +49,8 @@ ggkm(
 
 \item{risk_table}{Logical; \code{TRUE} will show the risk table. Default is
 \code{FALSE}}
+
+\item{risk_title}{String; title for the risk table. Default is "Number at risk".}
 
 \item{timeby}{Integer; amount to break the x-axis by.}
 

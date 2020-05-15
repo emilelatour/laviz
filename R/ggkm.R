@@ -14,6 +14,7 @@
 #' @param subtitle String; Subtitle for the plot. Default is NA.
 #' @param risk_table Logical; \code{TRUE} will show the risk table. Default is
 #'   \code{FALSE}
+#' @param risk_title String; title for the risk table. Default is "Number at risk".
 #' @param timeby Integer; amount to break the x-axis by.
 #' @param xlims A numeric vector; The minimum and maximum values for the x-axis.
 #'   Default is \code{0} and max time in the survfit obeject.
@@ -137,6 +138,7 @@ ggkm <- function(sfit,
                  main = "Kaplan-Meier Plot",
                  subtitle = NA,
                  risk_table = TRUE,
+                 risk_title = "Number at risk",
                  timeby = 100,
                  xlims = c(0, max(sfit$time)),
                  ylims = c(0, 1.01),
@@ -471,7 +473,7 @@ ggkm <- function(sfit,
       geom_text(size = 3.25,
                 family = font_family) +
       theme_classic() +
-      scale_y_discrete("Number at risk",
+      scale_y_discrete(risk_title,
                        # breaks = as.character(levels(risk.data$strata)),
                        # labels = rev(ystratalabs),
                        expand = c(0, 0)
@@ -480,7 +482,7 @@ ggkm <- function(sfit,
                          limits = xlims,
                          expand = c(0, 0)
                          )  +
-      ggtitle("Number at risk") +
+      ggtitle(risk_title) +
       theme(axis.title.x = element_text(vjust = 1),
             axis.title.y = element_blank(),
             axis.line = element_blank(),
