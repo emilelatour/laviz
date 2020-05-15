@@ -4,7 +4,9 @@
 \name{drsimonj_palettes}
 \alias{drsimonj_palettes}
 \title{drsimonj Colour Palettes}
-\format{An object of class \code{list} of length 5.}
+\format{
+An object of class \code{list} of length 5.
+}
 \usage{
 drsimonj_palettes
 }

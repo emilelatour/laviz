@@ -4,7 +4,9 @@
 \name{wom_palettes}
 \alias{wom_palettes}
 \title{WoM Colour Palettes}
-\format{An object of class \code{list} of length 7.}
+\format{
+An object of class \code{list} of length 7.
+}
 \usage{
 wom_palettes
 }
