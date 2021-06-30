@@ -308,13 +308,6 @@ theme_laviz <- function(base_family = "Arial",
                      legend.direction = "vertical")
 
 
-  #### Backgrounds --------------------------------
-
-  ret <- ret + theme(panel.background = element_rect(colour = "white",
-                                                     fill = "white"),
-                     strip.background = element_rect(colour = "white",
-                                                     fill = "white"))
-
   #### Border --------------------------------
 
   if (border == TRUE) {
@@ -330,4 +323,3 @@ theme_laviz <- function(base_family = "Arial",
 
 
 }
-
