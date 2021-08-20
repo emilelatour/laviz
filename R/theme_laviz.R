@@ -120,11 +120,16 @@ theme_laviz <- function(base_family = "Arial",
 
   #### Base theme --------------------------------
 
-  ret <- ggplot2::theme_minimal(base_family = base_family,
+  # ret <- ggplot2::theme_minimal(base_family = base_family,
+  #                               base_size = base_size)
+
+  ret <- ggplot2::theme_gray(base_family = base_family,
                                 base_size = base_size)
 
   ret <- ret + theme(legend.background = element_blank())
   ret <- ret + theme(legend.key = element_blank())
+  ret <- ret + theme(panel.background = element_blank())
+  ret <- ret + theme(strip.background = element_blank())
 
 
   #### Grid --------------------------------
