@@ -34,10 +34,10 @@ ggkm(
   legpos = c(0.9, 0.8),
   subs = NULL,
   font_family = "Arial",
-  adj_table_title = -0.2,
+  adj_table_title = -0.1,
   adj_y_axis_label = -12.5,
-  surv_plot_height = 0.75,
-  risk_table_height = 0.25
+  surv_plot_height = 1 - risk_table_height,
+  risk_table_height = length(levels(summary(sfit)$strata)) * 0.12
 )
 }
 \arguments{
@@ -127,10 +127,10 @@ in the right place. Default is \code{-12.5}. __More negative moves right__.
 This takes trial and error.}
 
 \item{surv_plot_height}{the height of the survival plot on the grid. Default
-is \code{0.75}. Ignored when risk.table = \code{FALSE}.}
+is \code{1 - length(levels(summary(fit)$strata)) * .12}. Ignored when risk.table = \code{FALSE}.}
 
 \item{risk_table_height}{the height of the risk table on the grid. Increase
-the value when you have many strata. Default is \code{0.25}. Ignored when
+the value when you have many strata. Default is \code{length(levels(summary(fit)$strata)) * .12}. Ignored when
 risk.table = \code{FALSE}.}
 }
 \value{
