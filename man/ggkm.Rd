@@ -17,6 +17,9 @@ ggkm(
   ylabs = "Survival Probability (\%)",
   ystratalabs = NULL,
   ystrataname = NULL,
+  yaccuracy = 1,
+  yscale = 100,
+  ysuffix = "",
   pval = TRUE,
   pval_threshold = 0.001,
   pval_accuracy = 0.001,
@@ -68,6 +71,17 @@ Default is \code{0} to \code{1.01} to give a little space at the top.}
 \item{ystratalabs}{String vector; Labels for the strata}
 
 \item{ystrataname}{String; The title for the strata.}
+
+\item{yaccuracy}{A number to round to. Use (e.g.) 0.01 to show 2 decimal
+places of precision. If NULL, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.}
+
+\item{yscale}{A scaling factor: x will be multiplied by scale before
+formatting. This is useful if the underlying data is very small or very
+large.}
+
+\item{ysuffix}{Additional text to display after the number.}
 
 \item{pval}{Logical; \code{TRUE} is default and shows a p-value onn the plot.}
 

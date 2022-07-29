@@ -25,6 +25,14 @@
 #'   (\%)"
 #' @param ystratalabs String vector; Labels for the strata
 #' @param ystrataname String; The title for the strata.
+#' @param yaccuracy A number to round to. Use (e.g.) 0.01 to show 2 decimal
+#'   places of precision. If NULL, the default, uses a heuristic that should
+#'   ensure breaks have the minimum number of digits needed to show the
+#'   difference between adjacent values.
+#' @param yscale A scaling factor: x will be multiplied by scale before
+#'   formatting. This is useful if the underlying data is very small or very
+#'   large.
+#' @param ysuffix Additional text to display after the number.
 #' @param pval Logical; \code{TRUE} is default and shows a p-value onn the plot.
 #' @param pval_threshold Numeric; threshold to showing actual p-value or "P <
 #'   ...". Defualt is \code{0.001}.
@@ -79,6 +87,7 @@
 #' @import patchwork
 #' @importFrom grDevices gray.colors
 #' @importFrom scales number
+#' @importFrom scales percent
 #' @importFrom stats pchisq
 #' @importFrom stats quantile
 #' @importFrom stats sd
@@ -147,6 +156,9 @@ ggkm <- function(sfit,
                  ylabs = "Survival Probability (%)",
                  ystratalabs = NULL,
                  ystrataname = NULL,
+                 yaccuracy = 1.0,
+                yscale = 100,
+                ysuffix = "",
                  pval = TRUE,
                  pval_threshold = 0.001,
                  pval_accuracy = 0.001,
@@ -168,8 +180,8 @@ ggkm <- function(sfit,
                  adj_table_title = -0.10,  # more negative moves left
                  adj_y_axis_label = -12.5, # more negative moves right
                  surv_plot_height = 1 - risk_table_height,
-                  risk_table_height = length(levels(summary(sfit)$strata)) * .12
-                 ) {
+                 risk_table_height = length(levels(summary(sfit)$strata)) * .12
+) {
 
 
   # #### Color palettes --------------------------------
@@ -702,7 +714,11 @@ ggkm <- function(sfit,
                        limits = xlims,
                        expand = c(0, 0)
     ) +
-    scale_y_continuous(labels = function(x) {100 * x},
+    scale_y_continuous(labels = function(x) {scales::percent(x = x,
+                                                             accuracy = yaccuracy,
+                                                             scale = yscale,
+                                                             suffix = ysuffix,
+                                                             big.mark = ",")},
                        limits = ylims,
                        expand = c(0, 0)
     ) +
@@ -864,7 +880,7 @@ ggkm <- function(sfit,
             plot.title = element_text(
               hjust = adj_table_title,
               # hjust = 0,
-                                       size = 10,
+              size = 10,
               #                         face = "bold"
             ),
             text = element_text(family = font_family)) +
