@@ -63,6 +63,8 @@
 
 calc_bin_width <- function(x, binw_select = "FD") {
 
+  x <- x[!is.na(x)]
+
 
   if (binw_select == "FD") {
     # Freedman-Diaconis (1981)
