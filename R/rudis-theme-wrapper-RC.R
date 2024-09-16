@@ -1,7 +1,7 @@
 #' @title
 #' #' Wrappers for hrbrthemes that work a little more consistently on my PC using the Roboto Condensed font.
 #' @references
-#' /url{https://github.com/hrbrmstr/hrbrthemes}
+#' \url{https://github.com/hrbrmstr/hrbrthemes}
 #'
 #' @param base_family,base_size base font family and size
 #' @param plot_title_family,plot_title_face,plot_title_size,plot_title_margin plot title family, face, size and margi

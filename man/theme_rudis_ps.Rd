@@ -99,5 +99,5 @@ count(mpg, class) \%>\%
 
 }
 \references{
-/url{https://github.com/hrbrmstr/hrbrthemes}
+\url{https://github.com/hrbrmstr/hrbrthemes}
 }

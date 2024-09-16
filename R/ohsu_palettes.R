@@ -167,8 +167,8 @@ ohsu_pal <- function(palette = "main",
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
 #'
-#' @inheritParams viridis::scale_color_viridis
-#' @inheritParams ohsu_pal
+# #' @inheritParams viridis::scale_color_viridis
+# #' @inheritParams ohsu_pal
 #' @importFrom ggplot2 scale_colour_manual
 #'
 #' @export
@@ -211,8 +211,8 @@ scale_colour_ohsu <- scale_color_ohsu
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_fill_gradientn(), used respectively when discrete is TRUE or FALSE
 #'
-#' @inheritParams viridis::scale_fill_viridis
-#' @inheritParams ohsu_pal
+# #' @inheritParams viridis::scale_fill_viridis
+# #' @inheritParams ohsu_pal
 #' @importFrom ggplot2 scale_fill_manual discrete_scale scale_fill_gradientn
 #'
 #' @export

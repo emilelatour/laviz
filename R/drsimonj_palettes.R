@@ -156,8 +156,8 @@ drsimonj_pal <- function(palette = "main",
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_color_gradientn(), used respectively when discrete is TRUE or FALSE
 #'
-#' @inheritParams viridis::scale_color_viridis
-#' @inheritParams drsimonj_pal
+# #' @inheritParams viridis::scale_color_viridis
+# #' @inheritParams drsimonj_pal
 #' @importFrom ggplot2 scale_colour_manual
 #'
 #' @export
@@ -200,8 +200,8 @@ scale_colour_drsimonj <- scale_color_drsimonj
 #' @param ... Additional arguments passed to discrete_scale() or
 #'            scale_fill_gradientn(), used respectively when discrete is TRUE or FALSE
 #'
-#' @inheritParams viridis::scale_fill_viridis
-#' @inheritParams drsimonj_pal
+# #' @inheritParams viridis::scale_fill_viridis
+# #' @inheritParams drsimonj_pal
 #' @importFrom ggplot2 scale_fill_manual discrete_scale scale_fill_gradientn
 #'
 #' @export
