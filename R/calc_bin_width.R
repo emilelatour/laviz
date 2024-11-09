@@ -1,6 +1,6 @@
 
 #' @title
-#' Calculate bin width for a histogram using various recomended methods
+#' Calculate bin width for a histogram using various recommended methods
 #'
 #' @description
 #' There are many different methods that have been recommended over the years to
@@ -132,5 +132,61 @@ calc_bin_width <- function(x, binw_select = "FD") {
     diff(pretty((max(x) - min(x)) / n_bin))[[1]]
 
   }
+}
+
+
+
+#' @title
+#' Calculate all bin width for a histogram using various recommended methods
+#'
+#' @description
+#' Applies `laviz::calc_bin_width` and returns a tibble with all the bin widths
+#' calculated by all the methods.
+#'
+#' @param x A numeric object
+#'
+#' @importFrom purrr map_dbl
+#' @importFrom tibble tibble
+#'
+#' @return
+#' A tibble
+#'
+#' @export
+#'
+#' @references
+#' https://en.wikipedia.org/wiki/Histogram#Square-root_choice
+#' https://stats.stackexchange.com/questions/798/calculating-optimal-number-of-bins-in-a-histogram
+#' https://arxiv.org/pdf/1612.07216.pdf
+#' https://cran.r-project.org/web/packages/essHist/essHist.pdf
+#' https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.170.173&rep=rep1&type=pdf
+#' https://www.neuralengine.org//res/histogram.html
+#' https://www.qimacros.com/histogram-excel/how-to-determine-histogram-bin-interval/#:~:text=Here's%20How%20to%20Calculate%20the,data%20points%20and%20round%20up.
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' calc_all_bin_width(diamonds$carat)
+#'
+#' calc_all_bin_width(economics_long$value)
+#'
+
+calc_all_bin_width <- function(x) {
+
+  bw_type <- NULL
+
+  bw_types <- c("FD",
+              "Sturges",
+              "Scott",
+              "Square-root",
+              "Rice",
+              "Shimazaki",
+              "Juran")
+
+tibble::tibble(
+  bw_type = bw_types,
+  bw = purrr::map_dbl(.x = bw_type,
+                      .f = ~ laviz::calc_bin_width(x = x,
+                                                   binw_select = .x)))
+
 }
 

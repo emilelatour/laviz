@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_bin_width.R
 \name{calc_bin_width}
 \alias{calc_bin_width}
-\title{Calculate bin width for a histogram using various recomended methods}
+\title{Calculate bin width for a histogram using various recommended methods}
 \usage{
 calc_bin_width(x, binw_select = "FD")
 }
