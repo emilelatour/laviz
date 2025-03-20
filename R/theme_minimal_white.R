@@ -8,8 +8,14 @@
 #' @param base_family Character. Base font family (default: "").
 #' @param base_line_size Numeric. Base line size relative to `base_size` (default: `base_size / 22`).
 #' @param base_rect_size Numeric. Base rectangle size relative to `base_size` (default: `base_size / 22`).
-#' @param base_col Character. Default color for axes, ticks, and borders (default: "#323232").
-#' @param axis_col Character. Color of axis lines and ticks. Defaults to `base_col`.
+#' @param base_col Character. Base text color (default: `"#323232"`).
+#' @param axis_text_family Character. Font family for axis text (default: `base_family`).
+#' @param axis_text_size Numeric. Font size for axis text (default: `base_size`).
+#' @param axis_title_family Character. Font family for axis titles (default: `base_family`).
+#' @param axis_title_size Numeric. Font size for axis titles (default: `base_size`).
+#' @param axis_title_face Character. Font face for axis titles (default: `"plain"`).
+#' @param axis_title_just Character. Axis title justification. One of `[blmcrt]` (default: `"mc"`).
+#' @param axis_col Character. Color for axis lines and text (default: `base_col`).
 #' @param grid Logical or Character. Controls the visibility of grid lines:
 #'   \itemize{
 #'     \item \code{TRUE} (default): Shows major and minor grid lines.
@@ -68,15 +74,21 @@
 #'
 #' @export
 theme_minimal_white <- function(base_size = 11,
-                         base_family = "",
-                         base_line_size = base_size/22,
-                         base_rect_size = base_size/22,
-                         base_col = "#323232",
-                         axis_col = base_col,
-                         grid = TRUE,
-                         axis = FALSE,
-                        ticks = FALSE,
-                        border = FALSE) {
+                                base_family = "",
+                                base_line_size = base_size/22,
+                                base_rect_size = base_size/22,
+                                base_col = "#323232",
+                                axis_text_family = base_family,
+                                axis_text_size = base_size,
+                                axis_title_family = base_family,
+                                axis_title_size = base_size,
+                                axis_title_face = "plain",
+                                axis_title_just = "mc",
+                                axis_col = base_col,
+                                grid = TRUE,
+                                axis = FALSE,
+                                ticks = FALSE,
+                                border = FALSE) {
 
 
   #### Base theme --------------------------------
@@ -155,6 +167,86 @@ theme_minimal_white <- function(base_size = 11,
     ret <- ret + theme(axis.ticks.length = grid::unit(5, "pt"))
   }
 
+
+  #### Text --------------------------------
+
+  ret <- ret + theme(text = element_text(family = base_family,
+                                         colour = base_col,
+                                         size = base_size))
+
+
+  #### Axis text --------------------------------
+
+  ret <- ret + theme(axis.text.x = element_text(family = axis_text_family,
+                                                colour = axis_col,
+                                                size = axis_text_size,
+                                                margin = margin(t = 0)))
+  ret <- ret + theme(axis.text.y = element_text(family = axis_text_family,
+                                                colour = axis_col,
+                                                size = axis_text_size,
+                                                margin = margin(r = 0)))
+
+
+  #### Axis title justification --------------------------------
+
+  xj <- switch(tolower(substr(axis_title_just, 1, 1)), b = 0, l = 0, m = 0.5, c = 0.5, r = 1, t = 1)
+  yj <- switch(tolower(substr(axis_title_just, 2, 2)), b = 0, l = 0, m = 0.5, c = 0.5, r = 1, t = 1)
+
+
+  #### Axis title --------------------------------
+
+  # ret <- ret + theme(axis.title = element_text(family = axis_title_family,
+  #                                              colour = axis_col,
+  #                                              size = axis_title_size,
+  #                                              margin = margin(t = 10)))
+  #
+  # ret <- ret + theme(axis.title.x = element_text(hjust = xj,
+  #                                                family = axis_title_family,
+  #                                                colour = axis_col,
+  #                                                size = axis_title_size,
+  #                                                face = axis_title_face,
+  #                                                margin = margin(t = 10)))
+  #
+  # ret <- ret + theme(axis.title.y = element_text(hjust = yj,
+  #                                                family = axis_title_family,
+  #                                                colour = axis_col,
+  #                                                size = axis_title_size,
+  #                                                face = axis_title_face,
+  #                                                margin = margin(r = 10)))
+  #
+  # ret <- ret + theme(axis.title.y.right = element_text(hjust = yj,
+  #                                                      angle = 90,
+  #                                                      family = axis_title_family,
+  #                                                      colour = axis_col,
+  #                                                      size = axis_title_size,
+  #                                                      face = axis_title_face,
+  #                                                      margin = margin(t = 10)))
+
+  ret <- ret + theme(axis.title = element_text(family = axis_title_family,
+                                               colour = axis_col,
+                                               size = axis_title_size,
+                                               margin = margin(t = 10)))
+
+  ret <- ret + theme(axis.title.x = element_text(hjust = xj,
+                                                 family = axis_title_family,
+                                                 colour = axis_col,
+                                                 size = axis_title_size,
+                                                 face = axis_title_face))
+
+  ret <- ret + theme(axis.title.y = element_text(hjust = yj,
+                                                 family = axis_title_family,
+                                                 colour = axis_col,
+                                                 size = axis_title_size,
+                                                 face = axis_title_face))
+
+  ret <- ret + theme(axis.title.y.right = element_text(hjust = yj,
+                                                       angle = 90,
+                                                       family = axis_title_family,
+                                                       colour = axis_col,
+                                                       size = axis_title_size,
+                                                       face = axis_title_face))
+
+
   #### Border --------------------------------
 
   if (border == TRUE) {
@@ -169,3 +261,6 @@ theme_minimal_white <- function(base_size = 11,
   ret
 
 }
+
+
+

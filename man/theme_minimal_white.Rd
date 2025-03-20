@@ -10,6 +10,12 @@ theme_minimal_white(
   base_line_size = base_size/22,
   base_rect_size = base_size/22,
   base_col = "#323232",
+  axis_text_family = base_family,
+  axis_text_size = base_size,
+  axis_title_family = base_family,
+  axis_title_size = base_size,
+  axis_title_face = "plain",
+  axis_title_just = "mc",
   axis_col = base_col,
   grid = TRUE,
   axis = FALSE,
@@ -26,9 +32,21 @@ theme_minimal_white(
 
 \item{base_rect_size}{Numeric. Base rectangle size relative to `base_size` (default: `base_size / 22`).}
 
-\item{base_col}{Character. Default color for axes, ticks, and borders (default: "#323232").}
+\item{base_col}{Character. Base text color (default: `"#323232"`).}
 
-\item{axis_col}{Character. Color of axis lines and ticks. Defaults to `base_col`.}
+\item{axis_text_family}{Character. Font family for axis text (default: `base_family`).}
+
+\item{axis_text_size}{Numeric. Font size for axis text (default: `base_size`).}
+
+\item{axis_title_family}{Character. Font family for axis titles (default: `base_family`).}
+
+\item{axis_title_size}{Numeric. Font size for axis titles (default: `base_size`).}
+
+\item{axis_title_face}{Character. Font face for axis titles (default: `"plain"`).}
+
+\item{axis_title_just}{Character. Axis title justification. One of `[blmcrt]` (default: `"mc"`).}
+
+\item{axis_col}{Character. Color for axis lines and text (default: `base_col`).}
 
 \item{grid}{Logical or Character. Controls the visibility of grid lines:
 \itemize{
