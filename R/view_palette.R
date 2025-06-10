@@ -1,39 +1,73 @@
-
-
-#' plot_colors and view_palette
+#' View a palette with color labels
 #'
-#' Various user defined palettes to use. And the function pie_palette() which
-#' takes a palette as an argument and returns a pie chart with labels; handy
-#' when you only want to pick specific colors from a palette and you don't know
-#' what they are yet.
+#' Displays a pie chart with labeled hex codes for visualizing and identifying
+#' individual colors in a palette.
 #'
-#' @param palette The palette that you want to visualize
+#' @param palette A character vector of hex color codes.
+#' @export
+#'
+#' @examples
+#' view_palette(get_palette("sb", "deep"))
+view_palette <- function(palette) {
+  graphics::pie(rep(1, length(palette)),
+                labels = sprintf("%d (%s)", seq_along(palette), palette),
+                col = palette)
+}
+
+#' Show a palette as a color bar
+#'
+#' Displays a horizontal strip of colors using `scales::show_col()`, useful for
+#' continuous palettes or clean comparisons.
+#'
+#' @param palette A character vector of hex color codes.
+#' @param border Optional border color for color boxes.
+#' @export
+#'
+#' @examples
+#' show_palette(get_palette("sb", "deep", type = "continuous", n = 20))
+show_palette <- function(palette, border = "grey80") {
+  scales::show_col(palette, labels = FALSE, borders = border)
+}
+
+#' View all palettes in a collection
+#'
+#' Visualizes each palette in a collection using `scales::show_col()`.
+#'
+#' @param collection Name of the collection (e.g., "sb", "ohsu")
+#' @param type One of "discrete" or "continuous"
+#' @param n If type = "continuous", number of interpolated colors to show
+#' @param border Border color (passed to `scales::show_col()`)
+#'
+#' @importFrom graphics par title
 #'
 #' @export
 #'
 #' @examples
-#' library(beyonce)
-#' view_palette(my_palette("sb_deep"))
-#' view_palette(beyonce_palette(1))
+#' view_palette_collection("sb")                             # discrete
+#' view_palette_collection("sb", type = "continuous", n = 40)  # continuous
+view_palette_collection <- function(collection,
+                                    type = "discrete",
+                                    n = 20,
+                                    border = "grey80") {
+  if (!collection %in% names(color_palettes)) {
+    stop(sprintf("Collection '%s' not found.", collection))
+  }
 
-#### plot_colors --------------------------------
+  palettes <- color_palettes[[collection]]
+  op <- par(mfrow = c(ceiling(length(palettes) / 2), 2),
+            mar = c(1, 1, 2, 1))
+  on.exit(par(op), add = TRUE)
 
-# These are some custom palettes that I like to use. References and links are
-# given where appropriate.
+  for (name in names(palettes)) {
+    pal <- if (type == "continuous") {
+      get_palette(collection, name, n = n, type = "continuous")
+    } else {
+      get_palette(collection, name, type = "discrete")
+    }
 
-
-#### pie_palette() --------------------------------
-
-# Function to print pie chart to preview what a palette looks like and to see
-# the color codes.
-
-view_palette <- function(palette) {
-
-  palette %>%
-    graphics::pie(rep(1, length(.)),
-        labels = sprintf("%d (%s)", seq_along(.), .),
-        col = .)
-
+    scales::show_col(pal, borders = border)
+    title(name, line = -1)
+  }
 }
 
 

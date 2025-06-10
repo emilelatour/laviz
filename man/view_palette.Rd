@@ -2,21 +2,17 @@
 % Please edit documentation in R/view_palette.R
 \name{view_palette}
 \alias{view_palette}
-\title{plot_colors and view_palette}
+\title{View a palette with color labels}
 \usage{
 view_palette(palette)
 }
 \arguments{
-\item{palette}{The palette that you want to visualize}
+\item{palette}{A character vector of hex color codes.}
 }
 \description{
-Various user defined palettes to use. And the function pie_palette() which
-takes a palette as an argument and returns a pie chart with labels; handy
-when you only want to pick specific colors from a palette and you don't know
-what they are yet.
+Displays a pie chart with labeled hex codes for visualizing and identifying
+individual colors in a palette.
 }
 \examples{
-library(beyonce)
-view_palette(my_palette("sb_deep"))
-view_palette(beyonce_palette(1))
+view_palette(get_palette("sb", "deep"))
 }
