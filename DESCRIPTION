@@ -50,6 +50,7 @@ Collate:
     'ggplot-scales.R'
     'ggpreview.R'
     'laviz.R'
+    'list-palettes.R'
     'make-eda-plots.R'
     'palettes-drsimonj.R'
     'palettes-personal.R'
