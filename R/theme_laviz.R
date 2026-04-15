@@ -317,7 +317,7 @@ theme_laviz <- function(base_family = "Arial",
 
   if (border == TRUE) {
     ret <- ret + theme(panel.border = element_rect(color = axis_col,
-                                                   size = 0.3 * 2,
+                                                   linewidth = 0.3 * 2,
                                                    fill = NA))
   }
 

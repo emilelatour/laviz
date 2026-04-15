@@ -33,7 +33,7 @@ Suggests:
     palmerpenguins, 
     readxl, 
     tidyverse
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://github.com/emilelatour/laviz
 BugReports: https://github.com/emilelatour/laviz/issues
 Remotes: dill/beyonce
